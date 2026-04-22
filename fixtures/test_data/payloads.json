@@ -1,0 +1,13 @@
+{
+    "valid_post": {
+      "title": "Test title from file",
+      "body": "Test body from file",
+      "userId": 1
+    },
+    "valid_put": {
+      "id": 1,
+      "title": "Updated title from file",
+      "body": "Updated body from file",
+      "userId": 1
+    }
+  }
