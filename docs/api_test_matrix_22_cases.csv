@@ -1,0 +1,23 @@
+Case ID,Category,Test Case Title,Endpoint (URL),Method HTTP,Request (JSON/XML/Form-data),Steps,Expected Status Code,Expected response body,Priority,Status,Actual status code,Actual response (short),Notes
+TC-01,Happy path,List all posts,/posts,GET,,"1) GET {BASE_URL}/posts",200,"JSON array; length >= 1",High,,,,
+TC-02,Happy path,Get an existing post,/posts/1,GET,,"1) GET {BASE_URL}/posts/1",200,"Object; id userId title body",High,,,,
+TC-03,Happy path,Create post,/posts,POST,"{""title"":""T"",""body"":""B"",""userId"":1}","1) POST JSON 2) Inspect response body",201,"Object with id; echoed fields; mock often id 101",High,,,,
+TC-04,Happy path,Full update (PUT),/posts/1,PUT,"{""id"":1,""title"":""U"",""body"":""U"",""userId"":1}","1) PUT JSON",200,"Object echoes sent data",High,,,,
+TC-05,Happy path,Partial update (PATCH),/posts/1,PATCH,"{""title"":""Patched""}","1) PATCH JSON",200,"Object; title updated",High,,,,
+TC-06,Happy path,Delete post,/posts/1,DELETE,,"1) DELETE",200,"Often empty object {}",High,,,,
+TC-07,Happy path,Filter posts by userId,/posts?userId=1,GET,,"1) GET with query userId=1",200,"Array; each item userId == 1",High,,,,
+TC-08,Edge case,Boundary userId,/posts,POST,"{""title"":""T"",""body"":""B"",""userId"":10}","1) POST",201,"Echo userId 10",Medium,,,,
+TC-09,Edge case,Empty title,/posts,POST,"{""title"":"""",""body"":""B"",""userId"":1}","1) POST",201,"Mock allows empty title",Medium,,,,
+TC-10,Edge case,Invalid non-numeric id,/posts/abc,GET,,"1) GET",404,"Not found",Medium,,,,
+TC-11,Edge case,POST without JSON header,/posts,POST,"plain text e.g. not-json","1) POST without Content-Type application/json or raw body",201 or 400,"Record actual status and body",Medium,,,,"Postman/Excel only; permissive mock"
+TC-12,Error,Non-existent post,/posts/55555,GET,,"1) GET",404,"Not found",High,,,,
+TC-13,Error,Malformed JSON,/posts,POST,"{invalid","1) POST invalid body; Content-Type application/json",500 or 400,"Error body; mock often 500",High,,,,
+TC-14,Security,Injection in text fields,/posts,POST,"title with <script>","1) POST",201,"Value reflected in title",Medium,,,,
+TC-15,Happy path,List users,/users,GET,,"1) GET /users",200,"Array of users",High,,,,"Automated in pytest"
+TC-16,Happy path,Get user by id,/users/1,GET,,"1) GET /users/1",200,"User object id name email",High,,,,"Automated in pytest"
+TC-17,Happy path,Comments for a post,/posts/1/comments,GET,,"1) GET nested resource",200,"Array of comments",Medium,,,,"Manual / Excel only"
+TC-18,Happy path,Filter comments by postId,/comments?postId=1,GET,,"1) GET with query",200,"Each item postId matches filter",Medium,,,,"Manual / Excel only"
+TC-19,Edge case,Limit number of posts,/posts?_limit=5,GET,,"1) GET with _limit=5",200,"List length <= 5",Medium,,,,"Manual / Excel only"
+TC-20,Edge case,Filter posts no matches,/posts?userId=999,GET,,"1) GET",200,"Empty array []",Medium,,,,"Manual / Excel only"
+TC-21,Edge case,Get post with id zero,/posts/0,GET,,"1) GET /posts/0",404,"Not found (verify mock)",Medium,,,,"Manual / Excel only"
+TC-22,Happy path,Get album by id,/albums/1,GET,,"1) GET /albums/1",200,"Album object userId title",Low,,,,"Manual / Excel only; extra REST resource"
