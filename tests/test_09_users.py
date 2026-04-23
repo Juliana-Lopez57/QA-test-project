@@ -12,10 +12,8 @@ def test_tc15_list_users():
     
     data = response.json()
     
-    # 1. Validación Estructural (Usa el esquema de LISTA de usuarios)
     validate_schema(data, "fixtures/schemas/user_list.schema.json")
     
-    # 2. Validación de Negocio
     assert len(data) >= 1
 
 def test_tc16_get_user_by_id():
@@ -26,8 +24,6 @@ def test_tc16_get_user_by_id():
     
     data = response.json()
     
-    # 1. Validación Estructural (Usa el esquema de UN SOLO usuario)
     validate_schema(data, "fixtures/schemas/user.schema.json")
-    
-    # 2. Validación de Negocio
+   
     assert data.get("id") == 1

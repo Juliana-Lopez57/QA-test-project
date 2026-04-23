@@ -38,14 +38,14 @@ def test_tc10_get_post_with_non_numeric_id_returns_404():
     """TC-10: GET /posts/abc - non-numeric id -> 404."""
     url = f"{BASE_URL}/posts/abc"
     response = requests.get(url, timeout=REQUEST_TIMEOUT)
-    # No schema validation needed for 404 errors
+    
     assert response.status_code == 404
 
 def test_tc12_get_nonexistent_post_returns_404():
     """TC-12: GET /posts/55555 - non-existent resource -> 404."""
     url = f"{BASE_URL}/posts/55555"
     response = requests.get(url, timeout=REQUEST_TIMEOUT)
-    # No schema validation needed for 404 errors
+    
     assert response.status_code == 404
 
 def test_tc13_post_malformed_json_returns_500_on_mock():
@@ -57,7 +57,7 @@ def test_tc13_post_malformed_json_returns_500_on_mock():
         headers={"Content-Type": "application/json"},
         timeout=REQUEST_TIMEOUT,
     )
-    # No schema validation needed for 500 errors
+    
     assert response.status_code == 500
 
 def test_tc14_post_with_script_in_title_is_echoed():
