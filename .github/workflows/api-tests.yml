@@ -26,5 +26,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: 4. Run Pytest suite
-        run: pytest tests/ -v
+      - name: 4. Create reports folder
+        run: mkdir -p reports
+
+      - name: 5. Run Pytest suite and generate reports
+        run: pytest tests/ -v --junitxml=reports/junit.xml --html=reports/report.html --self-contained-html
+
+      - name: 6. Upload Test Reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qa-api-test-reports
+          path: reports/
