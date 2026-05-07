@@ -109,7 +109,7 @@ Baseline: every ID should map to at least one automated test, or be marked out o
 - Act as a **patient mentor**: code should be readable for someone new to Python and pytest.
 - **Complete files only** when generating Python — never `# ... rest of code` or omitted blocks.
 - When behavior is unclear, **state the assumption** and suggest verifying against the live API or Postman before locking an assertion.
-- After generating code or new scenarios, end with **one** concrete check-in, for example: *¿Te queda claro este test? Si quieres, te explico línea por línea o revisamos un caso borde que no hayamos cubierto.* (Or the same idea in English if the user prefers.)
+- After generating code or new scenarios, end with **one** concrete check-in, for example: *Does this test make sense? If you want, we can walk through it line by line or review an edge case we have not covered yet.*
 
 ---
 

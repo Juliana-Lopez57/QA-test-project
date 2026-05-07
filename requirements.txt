@@ -10,3 +10,8 @@ pytest==9.0.3
 requests==2.33.1
 urllib3==2.6.3
 pytest-html==4.2.0
+
+# Web E2E (Playwright + pytest)
+playwright==1.59.0
+pytest-base-url==2.1.0
+pytest-playwright==0.7.2

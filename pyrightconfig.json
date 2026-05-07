@@ -1,0 +1,5 @@
+{
+  "venvPath": ".",
+  "venv": ".venv",
+  "extraPaths": ["week4-e2e-webtest"]
+}
