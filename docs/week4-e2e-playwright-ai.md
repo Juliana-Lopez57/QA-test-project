@@ -21,7 +21,7 @@ Learn how to design, implement, and maintain an End-to-End UI testing framework 
 - Learned the critical importance of using `playwright install --with-deps chromium` in CI pipelines to ensure Linux operating system dependencies for headless browsers are properly installed.
 
 ## 4. Deliverables Completed
-- ✅ `week4-e2e-webtest/tests/`: E2E suite with 4 main journeys and 1 edge case.
+- ✅ `week4-e2e-webtest/tests/`: E2E suite with five CRUD journeys (including one whitespace-only edge case) plus three filter-focused tests (**eight tests** total).
 - ✅ `week4-e2e-webtest/pages/`: Page Object Model implementation.
 - ✅ `week4-e2e-webtest/reports/`: AI-generated execution reports reflecting real terminal output.
 - ✅ `week4-e2e-webtest/ai-workflow/`: Documentation of the AI prompt process and manual interventions.
